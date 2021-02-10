@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   PER_RAGE = 20
 
   def index
-    @users = User.page(params[:page]).per(PER_RAGE)
+    @q = User.ransack(params[:q])
+    @users = @q.result.page(params[:page]).per(PER_RAGE)
   end
 end
