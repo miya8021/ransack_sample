@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  PER_RAGE = 20
+
   def index
-    @users = User.limit(20)
+    @users = User.page(params[:page]).per(PER_RAGE)
   end
 end
